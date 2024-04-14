@@ -3,3 +3,6 @@ Note: gunicorn my_project.wsgi is the command heroku will use to start the serve
 
 Note: psycopg2 is a driver for interacting with PostgreSQL databases using Python. The dj-database-url Python package is a utility to connect Django to a database using a URL.
 
+Note: The dj_database_url import is used to convert the database URL we copied from the ElephantSQL details tab into a format that Django can use to connect to an external database server.
+
+Note: Another variable considered secret in Django is the SECRET_KEY in settings.py. This is a unique, secret, and random string that is used for cryptographic signing. That means that it ensures the integrity of the data stored in the cookies, forms, and much more, which is essential for the security of your Django application. This is the next thing we need to secure.
