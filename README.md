@@ -13,3 +13,7 @@ model: So a model is a Python class that defines the structure of a database tab
 to fields in other tables.
 Fields are the named places where we store single pieces of data, such as a person's
 name, email address, or password.
+
+ Django models documentation: https://docs.djangoproject.com/en/4.2/ref/models/fields/#model-field-types
+
+ 
