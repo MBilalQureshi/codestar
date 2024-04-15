@@ -8,3 +8,8 @@ dj_database_url: The dj_database_url import is used to convert the database URL 
 SECRET_KEY: Another variable considered secret in Django is the SECRET_KEY in settings.py. This is a unique, secret, and random string that is used for cryptographic signing. That means that it ensures the integrity of the data stored in the cookies, forms, and much more, which is essential for the security of your Django application. This is the next thing we need to secure.
 
 Slug: In publishing, a slug is a short name for an article that is still in production. It comes from the lead casts used in print typesetting. You can tell Django was created for the newspaper industry! In Django, the slug is what you'll use to build a URL for each of your posts.
+
+model: So a model is a Python class that defines the structure of a database table. Within the class, we then define fields and their relationships
+to fields in other tables.
+Fields are the named places where we store single pieces of data, such as a person's
+name, email address, or password.
