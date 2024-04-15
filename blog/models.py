@@ -17,6 +17,41 @@ class Post(models.Model):
     excerpt = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        """
+        Adding a Meta class:
+        The posts are listed from newest to oldest creation time:
+        The ordering option adds metadata to the model about the default order in which the list of posts is displayed.
+        The posts are now listed from oldest to newest creation time. The - prefix on created_on indicates the posts are displayed
+        in descending order of creation date. If no leading - is used, then the order is ascending, and if a ? prefix is used, then the order is randomised.
+
+        The Meta class provides additional information or metadata about the model. One of its options is ordering,
+        which specifies how the records associated with the model are ordered. In this case, we've assigned the ordering option a
+        list with a single item, the created_on field. You can list more than one field to order on; e.g. the following would order by created_on
+        descending and then by author ascending.
+        """
+        # ordering = ["-created_on"]
+        ordering = ["-created_on", "author"]
+
+    def __str__(self):
+        """
+        When adding posts up till now, they have appeared in the admin panel as Post object(n), where n is an integer denoting the order of posts being added.
+        Now, as per the main image, they are identified in a human-readable manner.
+        he __str__() method has changed this post identifier to a string literal. By passing self as an argument to the __str__() method,
+        you can use the field values in the f-string.
+
+        We also added a Python magic __str__ method to our Post model. We also call this a dunder method because double underscores surround the name.
+        This method gives each post a name that superusers, rather than Python developers, can more easily understand. When we look at posts in the console or
+        admin panel, this name helps us figure out which post is which.
+        """
+        # return f"The title of this post is {self.title}"
+        return f"{self.title} | written by {self.author}"
+
+        '''
+        Other custom methods:
+        You can add other similar methods like this to models to make them do more things, like calculating a user's age from their date of birth field or putting a
+        preferred title in front of a name. In the world of web development, this helps keep our data organised and user-friendly.
+        '''
 
 class Comment(models.Model):
     post = models.ForeignKey(
