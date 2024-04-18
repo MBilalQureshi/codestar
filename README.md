@@ -16,4 +16,5 @@ name, email address, or password.
 
  Django models documentation: https://docs.djangoproject.com/en/4.2/ref/models/fields/#model-field-types
 
+ Views: https://docs.djangoproject.com/en/4.2/ref/class-based-views/generic-display/
  
