@@ -23,4 +23,4 @@ name, email address, or password.
 
  Cool URIs don't change: https://www.w3.org/Provider/Style/URI
 
- 
+Summernote Package: pip3 install django-summernote~=0.8.20.0, The ready-made SummernoteModelAdmin class defines the text editor, enabling you to access its functionality in the admin panel for your posts.
