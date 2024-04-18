@@ -17,4 +17,10 @@ name, email address, or password.
  Django models documentation: https://docs.djangoproject.com/en/4.2/ref/models/fields/#model-field-types
 
  Views: https://docs.djangoproject.com/en/4.2/ref/class-based-views/generic-display/
+
+
+ Design philosophies: https://docs.djangoproject.com/en/4.2/misc/design-philosophies/
+
+ Cool URIs don't change: https://www.w3.org/Provider/Style/URI
+
  
