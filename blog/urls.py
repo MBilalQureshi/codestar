@@ -15,5 +15,5 @@ As the Django documentation says, tying URLs to Python function names is a Bad A
 
 urlpatterns = [
     # As the view is a class, you need an as_view() method
-    path('posts/', views.PostList.as_view(), name='home'),
+    path('', views.PostList.as_view(), name='home'),
 ]
