@@ -40,5 +40,9 @@ class PostList(generic.ListView):
     # The ordering works with filters too!
 
     # queryset = Post.objects.filter(author=3)
-    queryset = Post.objects.filter(status=1).order_by("-created_on")
+    # queryset = Post.objects.filter(status=1).order_by("-created_on")
     # template_name = "post_list.html"
+
+    queryset = Post.objects.filter(status=1)
+    template_name = "blog/index.html"
+    paginate_by = 6

@@ -29,3 +29,15 @@ Fixtures: they help move data into databases. Think of a fixture as a file conta
 Note: You can keep the directory locally, as this technique will be helpful in the future if you run into database errors.
 
 
+Prepare the project for multiple template directories: TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates'), Scroll down in the codestar/settings.py file to TEMPLATES and add your newly created TEMPLATES_DIR constant to the list of 'DIRS'.
+'DIRS': [TEMPLATES_DIR], Add a new top-level templates directory, Add a new base.html file to your newly created top-level templates directory.
+explanation:
+Finding our templates
+How does Django know where to find the templates?
+
+That is controlled by the TEMPLATES setting in settings.py.
+The DIRS key tells Django which directories to look in. This is a Python list, so we add the TEMPLATES_DIR variable, which was set at the top of settings.py.
+The TEMPLATES setting also has APP_DIRS set to True, which means that Django will also look for a templates directory inside all our app directories.
+Finally, in our project, we set TEMPLATES_DIR value to the templates directory in our base, or top-level directory.
+
+
