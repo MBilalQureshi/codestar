@@ -24,3 +24,8 @@ name, email address, or password.
  Cool URIs don't change: https://www.w3.org/Provider/Style/URI
 
 Summernote Package: pip3 install django-summernote~=0.8.20.0, The ready-made SummernoteModelAdmin class defines the text editor, enabling you to access its functionality in the admin panel for your posts.
+
+Fixtures: they help move data into databases. Think of a fixture as a file containing data tailored to your database. You can use it to save database contents or, as we'll see here, to fill a database for development. We'll work with a JSON fixture, but Django also supports XML and YAML. use python3 manage.py loaddata posts after adding posts.json data.You can now add blog/fixtures/ to the .gitignore file.
+Note: You can keep the directory locally, as this technique will be helpful in the future if you run into database errors.
+
+
