@@ -40,4 +40,6 @@ The DIRS key tells Django which directories to look in. This is a Python list, s
 The TEMPLATES setting also has APP_DIRS set to True, which means that Django will also look for a templates directory inside all our app directories.
 Finally, in our project, we set TEMPLATES_DIR value to the templates directory in our base, or top-level directory.
 
+Whitenoise -> Deployment with static files: The deployed app will then look as nicely styled as the local development version.
 
+To do this, we will use a Python package named WhiteNoise. pip3 install whitenoise~=5.3.0, python3 manage.py collectstatic , python3 -V(check python version), add python version in runtime.txt file
