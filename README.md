@@ -40,6 +40,7 @@ The DIRS key tells Django which directories to look in. This is a Python list, s
 The TEMPLATES setting also has APP_DIRS set to True, which means that Django will also look for a templates directory inside all our app directories.
 Finally, in our project, we set TEMPLATES_DIR value to the templates directory in our base, or top-level directory.
 
+--------
 Whitenoise -> Deployment with static files: The deployed app will then look as nicely styled as the local development version. This package will allow your Heroku app to serve its own static files without relying on any external file hosting services like a content delivery network (CDN).
 
 To do this, we will use a Python package named WhiteNoise. pip3 install whitenoise~=5.3.0, python3 manage.py collectstatic , python3 -V(check python version), add python version in runtime.txt file, use heroku link :https://devcenter.heroku.com/articles/python-support#specifying-a-python-version
@@ -47,3 +48,8 @@ To do this, we will use a Python package named WhiteNoise. pip3 install whitenoi
 Run the collectstatic command in the terminal to collect the static files into a staticfiles directory.
 Note: The command has created a staticfiles directory that you can see in the left-hand explorer panel. We will explain this in detail in the next topic.
 python3 manage.py collectstatic
+
+Return to the Heroku dashboard, and click on the Settings tab and the Reveal config vars button. Remove the DISABLE_COLLECTSTATIC key/value pair.
+
+Note: This environment variable prevented collectstatic from running on deploy up till now, but as static files are set up, we can remove this.
+--------

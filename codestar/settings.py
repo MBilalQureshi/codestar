@@ -139,7 +139,9 @@ STATIC_URL = 'static/'
 # build a path for our subdirectory static so we can link to files in the static directory from a template. 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 
-#for white noise
+# for white noise, When collectstatic is run, Django collects all of the static files for all of the installed apps into one directory. 
+# In this case, that's the staticfiles directory we specified in the STATIC_ROOT setting in settings.py. 
+# This setting defines where Django will serve static files from. The collectstatic needs to be run every time we add or change a CSS, JavaScript or static image file.
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
