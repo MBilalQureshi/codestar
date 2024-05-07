@@ -53,3 +53,8 @@ Return to the Heroku dashboard, and click on the Settings tab and the Reveal con
 
 Note: This environment variable prevented collectstatic from running on deploy up till now, but as static files are set up, we can remove this.
 --------
+
+As we added static default image, Collect the new static files to the staticfiles directory. Type yes when prompted to overwrite the existing files.
+
+python3 manage.py collectstatic
+Note: Only the one new image file in static was copied to staticfiles.
