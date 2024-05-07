@@ -58,3 +58,7 @@ As we added static default image, Collect the new static files to the staticfile
 
 python3 manage.py collectstatic
 Note: Only the one new image file in static was copied to staticfiles.
+
+-------------
+Filter : https://docs.djangoproject.com/en/4.2/ref/templates/builtins/#ref-templates-builtins-filters
+

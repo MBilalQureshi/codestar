@@ -49,6 +49,8 @@ class PostList(generic.ListView):
 
 def post_detail(request, slug):
     """
+    The slug parameter gets the argument value from the URL pattern named post_detail
+
     Display an individual :model:`blog.Post`.
 
     **Context**
@@ -67,5 +69,6 @@ def post_detail(request, slug):
     return render(
         request,
         "blog/post_detail.html",
-        {"post": post},
+        {"post": post,
+        "coder": "Muhammad Bilal"},
     )

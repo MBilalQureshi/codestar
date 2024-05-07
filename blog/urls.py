@@ -16,5 +16,8 @@ As the Django documentation says, tying URLs to Python function names is a Bad A
 urlpatterns = [
     # As the view is a class, you need an as_view() method
     path('', views.PostList.as_view(), name='home'),
+    # If you had a human resources web app that identified workers by their ID badge number,
+    #  then you could use the syntax <int:id_badge> to pass the integer argument to the URL path. Alternatively,
+    #   a car mechanics web app identifying cars by their alphanumeric registration plate could do so with <str:reg>
     path('<slug:slug>/', views.post_detail, name='post_detail'),
 ]
