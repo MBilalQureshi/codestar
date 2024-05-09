@@ -64,8 +64,19 @@ Note: Only the one new image file in static was copied to staticfiles.
 Filter : https://docs.djangoproject.com/en/4.2/ref/templates/builtins/#ref-templates-builtins-filters
 
 -------------
-Django All auth
+Django All auth https://docs.allauth.org/en/latest/installation/quickstart.html
 AllAuth offers distinct advantages, such as sending password and account confirmation emails, enforcing password complexity and providing single sign-on using Google or Facebook.
 pip3 install django-allauth~=0.57.0
 pip3 freeze --local > requirements.txt
 python3 manage.py migrate
+From the terminal, check the location of your django-allauth package files on your computer. Copy the file path labelled Location:
+You will need this in the next step.
+pip3 show django-allauth
+Copy the allauth template files to the projects templates directory using this terminal command where <Location> is the file path you copied in the previous step.
+cp -r <Location>/allauth/templates/* ./templates/
+Open the templates/accounts/logout.html file and replace the code with all the code in this file.
+Note: You will update the signup template code in an upcoming topic.
+https://github.com/Code-Institute-Solutions/blog/blob/main/11_authorisation/01_allauth/templates/account/login.html
+https://github.com/Code-Institute-Solutions/blog/blob/main/11_authorisation/01_allauth/templates/account/logout.html
+Source code
+https://github.com/Code-Institute-Solutions/blog/tree/main/11_authorisation/01_allauth
