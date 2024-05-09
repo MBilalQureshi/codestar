@@ -65,3 +65,7 @@ Filter : https://docs.djangoproject.com/en/4.2/ref/templates/builtins/#ref-templ
 
 -------------
 Django All auth
+AllAuth offers distinct advantages, such as sending password and account confirmation emails, enforcing password complexity and providing single sign-on using Google or Facebook.
+pip3 install django-allauth~=0.57.0
+pip3 freeze --local > requirements.txt
+python3 manage.py migrate
