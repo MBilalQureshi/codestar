@@ -80,3 +80,24 @@ https://github.com/Code-Institute-Solutions/blog/blob/main/11_authorisation/01_a
 https://github.com/Code-Institute-Solutions/blog/blob/main/11_authorisation/01_allauth/templates/account/logout.html
 Source code
 https://github.com/Code-Institute-Solutions/blog/tree/main/11_authorisation/01_allauth
+
+
+pip3 show django-allauth, We use this command to find the package location, so we can copy the template files from it.
+
+Crispy Forms
+pip3 install django-crispy-forms~=2.0 crispy-bootstrap5~=0.7
+To write a comment, we will use a library
+called Django Crispy Forms. You don’t need to use an external library in your projects, you
+can create standard HTML forms if you wish. We’re using Crispy Forms for the following reasons:
+It makes creating well-structured, nicely designed
+forms easy with just a few lines of code. Secondly Crispy Forms integrates easily with
+Bootstrap and adds the relevant classes for us. It also allows us to customise the structure
+of our forms easily, which allows us to make complex, multi-column forms.
+
+pip3 freeze --local > requirements.txt
+'allauth.socialaccount',
+'crispy_forms',
+'crispy_bootstrap5',
+'django_summernote',
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
