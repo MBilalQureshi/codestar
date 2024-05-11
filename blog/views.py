@@ -75,6 +75,10 @@ def post_detail(request, slug):
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
+            # Calling the save method with commit=False returns an object that hasn't yet been saved to the database so that we can modify it further. We do this because we need to populate the post and author fields before we save. The object will not be written to the database until we call the save method again.
+    # You can think of the commit=False argument like git commits. When using git, we can use git add to add new and updated files and to remove files. These changes are not finalised until we use git commit.
+
+    # In the same way, calling the comment_form.save method with commit=False, allows us to make changes to the database record until we call the save method with no arguments, which commits our changes to the database.
             comment = comment_form.save(commit=False)
             comment.author = request.user
             comment.post = post
@@ -83,6 +87,7 @@ def post_detail(request, slug):
             request, messages.SUCCESS,
             'Comment submitted and awaiting approval'
         )
+    # Outside the if statement, we create a blank instance of the CommentForm class. This line resets the content of the form to blank so that a user can write a second comment if they wish.
     comment_form = CommentForm()
 
     return render(
