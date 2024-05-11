@@ -68,6 +68,8 @@ def post_detail(request, slug):
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
 
+    # when we use post.comments.all(), it will return all comments related to the selected post by using related_name="comments".
+    # This is what is called a reverse lookup. We don't access the Comment model directly. Instead, we fetch the related data from the perspective of the Post model.
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
     if request.method == "POST":

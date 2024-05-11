@@ -54,6 +54,12 @@ class Post(models.Model):
         '''
 
 class Comment(models.Model):
+    # related_name
+    # While the Post model doesn't have a field named comments, the related_name in our Comment model sets up a logical link, effectively 
+    # creating this association, as you can see in the image and the code.
+    
+    # when we use post.comments.all(), it will return all comments related to the selected post by using related_name="comments".
+    # This is what is called a reverse lookup. We don't access the Comment model directly. Instead, we fetch the related data from the perspective of the Post model.
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name="comments")
     author = models.ForeignKey(
