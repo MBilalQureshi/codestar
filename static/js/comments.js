@@ -1,3 +1,10 @@
+// In the context of JavaScript usage with Django, why is it important to construct URLs for edit and delete operations?
+// To dynamically generate correct URLs.
+// correct
+// Answer
+// Correct:Well done! JavaScript can dynamically generate URLs corresponding to specific items to edit or delete, interacting with Django's URL dispatcher.
+
+
 // edit comment variables
 const editButtons = document.getElementsByClassName("btn-edit");
 const commentText = document.getElementById("id_body");
@@ -26,6 +33,7 @@ for (let button of deleteButtons) {
     // deleteConfirm.href = `delete_comment/${commentId}`;
     // This code ensures that the delete link on the modal's confirmation button is updated with the right comment ID. Therefore, when the user confirms the deletion,
     // Django receives the correct URL and knows which comment to remove from the database.
+    // "CALLS THE VIEWS IN BAKGROUND FROM HERE"
     deleteConfirm.href = `delete_comment/${commentId}`;
     deleteModal.show();
   });
@@ -56,6 +64,7 @@ for (let button of editButtons) {
   // Note: An action value on a form appends onto the current URL. As the user is viewing the specific blog post, this post's <slug:slug>/ is already part of the URL and only edit_comment/<int:comment_id> is needed to complete the URL path with the action attribute. For example:
 
   // form action = "edit_comment/7"> // returns http://urladdress.com/<slug:slug>/edit_comment/7
+  // "CALLS THE VIEWS IN BAKGROUND FROM HERE"
     commentForm.setAttribute("action", `edit_comment/${commentId}`);
   });
 }

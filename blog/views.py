@@ -1,3 +1,17 @@
+# Why might you override the model method in a Django class-based view with a queryset? For example:
+
+# Before
+# model = Post
+# template_name = "post_list.html"
+
+# After
+# queryset = Post.objects.filter(status=1)
+# template_name = "post_list.html"
+
+# # To allow extra filtering of the data for the template.
+# Answer
+# Correct:Yes, queryset allows extra data filtering before sending data in the context to the template. Well done!
+
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
@@ -142,7 +156,7 @@ def comment_delete(request, slug, comment_id):
         messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
     else:
         messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
-        
+
     # HttpResponseRedirect is a Django class that tells the browser to go to a different URL.
     # reverse is a Django function that constructs a URL from the provided URL path name and any relevant URL arguments: args=[slug].
     # Using the slug argument ensures the user is returned to the same blog post on which they edited or deleted a comment.
