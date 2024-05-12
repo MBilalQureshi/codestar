@@ -20,4 +20,5 @@ urlpatterns = [
     #  then you could use the syntax <int:id_badge> to pass the integer argument to the URL path. Alternatively,
     #   a car mechanics web app identifying cars by their alphanumeric registration plate could do so with <str:reg>
     path('<slug:slug>/', views.post_detail, name='post_detail'),
+    path('<slug:slug>/edit_comment/<int:comment_id>', views.comment_edit, name='comment_edit'),
 ]
