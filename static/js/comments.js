@@ -21,6 +21,11 @@ const deleteConfirm = document.getElementById("deleteConfirm");
 for (let button of deleteButtons) {
   button.addEventListener("click", (e) => {
     let commentId = e.target.getAttribute("comment_id");
+    // For the delete functionality, the JavaScript determines which comment we aim to delete based on its ID.
+
+    // deleteConfirm.href = `delete_comment/${commentId}`;
+    // This code ensures that the delete link on the modal's confirmation button is updated with the right comment ID. Therefore, when the user confirms the deletion,
+    // Django receives the correct URL and knows which comment to remove from the database.
     deleteConfirm.href = `delete_comment/${commentId}`;
     deleteModal.show();
   });
@@ -42,6 +47,15 @@ for (let button of editButtons) {
     let commentContent = document.getElementById(`comment${commentId}`).innerText;
     commentText.value = commentContent;
     submitButton.innerText = "Update";
+
+  // The JavaScript code also modifies the comment form's action attribute to ensure it knows which comment it is updating when you click the Edit button:
+
+  // commentForm.setAttribute("action", `edit_comment/${commentId}`);
+  // Here, the code constructs the appropriate action URL for the comment being edited. When the form is submitted, this updated URL directs Django to the comment in the database that needs updating.
+
+  // Note: An action value on a form appends onto the current URL. As the user is viewing the specific blog post, this post's <slug:slug>/ is already part of the URL and only edit_comment/<int:comment_id> is needed to complete the URL path with the action attribute. For example:
+
+  // form action = "edit_comment/7"> // returns http://urladdress.com/<slug:slug>/edit_comment/7
     commentForm.setAttribute("action", `edit_comment/${commentId}`);
   });
 }
