@@ -101,3 +101,40 @@ pip3 freeze --local > requirements.txt
 'django_summernote',
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+------------------------------------------------------
+Cloudinary to store user-uploaded media
+You may be wondering why we don’t just store user-uploaded media on Heroku along with the
+staticfiles?
+Why do we need a separate media hosting provider?
+This is because Heroku has what’s known as an “ephemeral file system”.
+When you create a Heroku app, it provides what's known as a dyno.
+And this is effectively like a small container to run your project in.
+A user-uploaded image is stored by the dyno within the project file structure.
+However, when your project has been idle, and no one has accessed it for a while, then
+the dyno stops to conserve resources.
+When that happens, any files that have been uploaded since the project was created are
+lost.
+When the next user accesses the project only the image alt text is seen.
+Therefore, we're going to upload media images to a persistent file store, which is where
+Cloudinary comes in.
+Now we could have chosen to use another provider, such as Microsoft Azure or Amazon S3, but
+these are more complicated to set up.
+For everything we want to do in this project, Cloudinary is a perfectly good solution.
+
+STATIC AND CLOUDINARY MEDIA FILES:
+But why do we make a distinction between static and media files?
+You learned previously that static files are those that are unchanged during the application
+execution.
+Using staticfiles directories and whitenoise keeps these separate, making deployment, backups
+and version control easier.
+Media files, however, are unique to a user and may change frequently.
+As a result, they are not collected or managed by Django, but Django will serve them from
+a specified media URL.
+In this case, the Cloudinary API will generate a URL for each image that the Django project
+can use.
+This is a separation of concerns.
+Heroku hosts an application of a known size and doesn’t want an unknown quantity of
+files to be uploaded to their servers.
+Cloudinary, on the other hand, hosts media files but not running applications.
+---------------------
