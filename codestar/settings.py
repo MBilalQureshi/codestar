@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from django.contrib.messages import constants as messages
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
@@ -32,6 +33,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['8000-mbilalqureshi-codestar-r57gqo00kj3.ws-eu111.gitpod.io','.herokuapp.com']
 
+MESSAGE_TAGS = {
+    messages.SUCCESS: 'alert-success',
+    messages.ERROR: 'alert-danger',
+}
 
 # Application definition
 

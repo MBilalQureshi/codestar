@@ -1,9 +1,25 @@
 from django.shortcuts import render, get_object_or_404
-from .models import About
 from django.contrib import messages
 from .forms import CollaborateForm
+from .models import About
+
 
 def about_me(request):
+    """
+    Renders the most recent information on the website author
+    and allows user collaboration requests.
+
+    Displays an individual instance of :model:`about.About`.
+
+    **Context**
+    ``about``
+        The most recent instance of :model:`about.About`.
+        ``collaborate_form``
+            An instance of :form:`about.CollaborateForm`.
+    
+    **Template**
+    :template:`about/about.html`
+    """
     about = About.objects.order_by('-updated_on').first()
     
     if request.method == "POST":

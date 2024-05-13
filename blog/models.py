@@ -1,11 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
-# Create your models here.
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
 class Post(models.Model):
+    """
+    Stores a single blog post entry related to :model:`auth.User`.
+    """
     title = models.CharField(max_length=200, unique=True)
     # The slug attribute with field type SlugField() also generates a single-line form input type text. It accepts Python string data type.
     # A slug is a short label only containing letters, numbers, underscores or hyphens. You would use one as a semantic URL path rather than an integer or database row ID.
@@ -20,6 +22,11 @@ class Post(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
+        """
+        Stores a single comment entry related to :model:`auth.User`
+        and :model:`blog.Post`.
+        """
+
         """
         Adding a Meta class:
         The posts are listed from newest to oldest creation time:

@@ -31,6 +31,20 @@ from .forms import CommentForm
 # which posts you want to see. Let’s add these optional lines of code in the PostView class,
 # we are still going to remove model = Post and add queryset = Post.objects.all() and template_name = "post_list.html", result is still same on view
 class PostList(generic.ListView):
+    """
+    Returns all published posts in :model:`blog.Post`
+    and displays them in a page of six posts. 
+    **Context**
+
+    ``queryset``
+        All published instances of :model:`blog.Post`
+    ``paginate_by``
+        Number of posts per page.
+        
+    **Template:**
+
+    :template:`blog/index.html`
+    """
     # 1
     # The generic view very cleverly infers the template name itself. By which, we mean that it follows a certain rule to decide what the template should be called.
     # As shown in the example above, the post part of the name refers to the model and the list part is the type of generic view we're using. So,
@@ -65,15 +79,20 @@ class PostList(generic.ListView):
     paginate_by = 6
 
 def post_detail(request, slug):
+    # The slug parameter gets the argument value from the URL pattern named post_detail
     """
-    The slug parameter gets the argument value from the URL pattern named post_detail
-
     Display an individual :model:`blog.Post`.
 
     **Context**
 
     ``post``
         An instance of :model:`blog.Post`.
+    ``comments``
+        All approved comments related to the post.
+    ``comment_count``
+        A count of approved comments related to the post.
+    ``comment_form``
+        An instance of :form:`blog.CommentForm`
 
     **Template:**
 
@@ -119,7 +138,16 @@ def post_detail(request, slug):
 
 def comment_edit(request, slug, comment_id):
     """
-    view to edit comments
+    Display an individual comment for edit.
+
+    **Context**
+
+    ``post``
+        An instance of :model:`blog.Post`.
+    ``comment``
+        A single comment related to the post.
+    ``comment_form``
+        An instance of :form:`blog.CommentForm`
     """
     if request.method == "POST":
 
@@ -145,7 +173,14 @@ def comment_edit(request, slug, comment_id):
 
 def comment_delete(request, slug, comment_id):
     """
-    view to delete comment
+    Delete an individual comment.
+
+    **Context**
+
+    ``post``
+        An instance of :model:`blog.Post`.
+    ``comment``
+        A single comment related to the post.
     """
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
