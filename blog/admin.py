@@ -11,7 +11,10 @@ we register it with a decorator that is more Pythonic and allows us to customise
 '''
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
-
+    """
+    Lists fields for display in admin, fileds for search,
+    field filters, fields to prepopulate and rich-text editor.
+    """
     list_display = ('title', 'slug', 'status','created_on')
     search_fields = ['title']
     list_filter = ('status','created_on')

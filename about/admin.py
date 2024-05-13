@@ -4,6 +4,10 @@ from django_summernote.admin import SummernoteModelAdmin
 
 @admin.register(About)
 class AboutAdmin(SummernoteModelAdmin):
+    """
+    Lists fields for display in admin, fileds for search,
+    field filters, fields to prepopulate and rich-text editor.
+    """
     list_display = ('title','updated_on')
     search_fields = ('title','updated_on')
     list_filter = ('title','updated_on')
@@ -18,5 +22,7 @@ class AboutAdmin(SummernoteModelAdmin):
 
 @admin.register(CollaborateRequest)
 class CollaborateRequestAdmin(admin.ModelAdmin):
-
+    """
+    Lists message and read fields for display in admin
+    """
     list_display = ('message', 'read',)
