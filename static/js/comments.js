@@ -27,7 +27,7 @@ const deleteConfirm = document.getElementById("deleteConfirm");
 */
 for (let button of deleteButtons) {
   button.addEventListener("click", (e) => {
-    let commentId = e.target.getAttribute("comment_id");
+    let commentId = e.target.getAttribute("data-comment_id");
     // For the delete functionality, the JavaScript determines which comment we aim to delete based on its ID.
 
     // deleteConfirm.href = `delete_comment/${commentId}`;
@@ -51,7 +51,7 @@ for (let button of deleteButtons) {
 */
 for (let button of editButtons) {
   button.addEventListener("click", (e) => {
-    let commentId = e.target.getAttribute("comment_id");
+    let commentId = e.target.getAttribute("data-comment_id");
     let commentContent = document.getElementById(`comment${commentId}`).innerText;
     commentText.value = commentContent;
     submitButton.innerText = "Update";
