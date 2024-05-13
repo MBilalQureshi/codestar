@@ -104,6 +104,29 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 ------------------------------------------------------
 Cloudinary to store user-uploaded media
+pip3 install cloudinary~=1.36.0 dj3-cloudinary-storage~=0.0.6 urllib3~=1.26.15
+pip3 freeze --local > requirements.txt
+Click the provided link to sign up for Cloudinary.
+
+Provide your name and email address and choose a password or sign in with a social account.
+If asked, How would you best describe yourself? you can click on Developer.
+Depending on your chosen sign-up method, you may have to respond to an email verification.
+
+os.environ.setdefault(
+    "CLOUDINARY_URL", "<URL copied from Cloudinary in last step>")
+
+INSTALLED_APPS = [
+    # …
+    'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'django.contrib.sites',
+    # …
+    'django_summernote',
+    'cloudinary',
+    'blog',
+    'about',
+]
+
 You may be wondering why we don’t just store user-uploaded media on Heroku along with the
 staticfiles?
 Why do we need a separate media hosting provider?
