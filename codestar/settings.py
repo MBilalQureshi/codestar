@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import sys
 from django.contrib.messages import constants as messages
 import dj_database_url
 if os.path.isfile('env.py'):
@@ -119,7 +120,8 @@ DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
-
+if 'test' in sys.argv:
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
 # Note: This is a list of the trusted origins for requests. As shown, you need to add both your local development server URL domain 
 # and your production server URL domain to allow you to add blog post content from the admin dashboard. The subdomain is wildcarded with a *.
 CSRF_TRUSTED_ORIGINS = [

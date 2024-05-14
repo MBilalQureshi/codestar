@@ -126,6 +126,8 @@ INSTALLED_APPS = [
     'blog',
     'about',
 ]
+The main reason for adding 'cloudinary_storage' to the INSTALLED_APPS in Django's settings.py when setting up Cloudinary => 'cloudinary_storage' overrides Django's default media file storage so that we can use Cloudinary instead.
+
 
 You may be wondering why we don’t just store user-uploaded media on Heroku along with the
 staticfiles?
