@@ -48,3 +48,28 @@ class TestBlogViews(TestCase):
         self.assertIn(b"Blog content", response.content)
         self.assertIsInstance(
             response.context['comment_form'], CommentForm)
+    
+    def test_successful_comment_submission(self):
+        """Test for posting a comment on a post"""
+        # Commenting on a blog post is reserved for authenticated users, so a user must log in before commenting. We use the username and password previously defined in the setUp method to test this step.
+        self.client.login(username="myUsername", password="myPassword")
+        post_data = {
+            'body': 'This is a test comment.'
+        }
+        response = self.client.post(
+            reverse('post_detail', args=['blog-title']), post_data)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Comment submitted and awaiting approval',
+                      response.content)
+
+    def test_successful_collaboration_request_submission(self):
+        """Test for a user requesting a collaboration"""
+        post_data = {
+            'name': 'test name',
+            'email': 'test@email.com',
+            'message': 'test message'
+        }
+        response = self.client.post(reverse('about'), post_data)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(
+            b'Collaboration request received! I endeavour to respond within 2 working days.', response.content)
