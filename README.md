@@ -176,3 +176,15 @@ assertNotIn(a, b)	a is not in b
 assertIsInstance(a, b)	a is an instance of b
 Each of these also has an optional msg argument. If we supply that, then this message is what will be printed out on failure. So, we could adjust the assertTrue in our first test to read:
 self.assertTrue(comment_form.is_valid(), msg='Form is not valid')
+
+The order in which the various tests will be run is determined by sorting the test method names with respect to the built-in ordering for strings.
+This means that the tests in each class are ordered alphabetically by their test method names in ascending order.
+Running specific tests
+As you write more tests, you may want to isolate which tests run each time. You can achieve this with ever-increasing levels of detail:
+
+Terminal Command	Explanation
+python3 manage.py test	Run all tests.
+python3 manage.py test about	Run all tests in the about app.
+python3 manage.py test about.test_forms	Run all tests in the test_forms.py file, in the about app.
+python3 manage.py test about.test_forms. TestCollaborateForm	Run all tests in the TestCollaborateForm class in about.test_forms.
+python3 manage.py test about.test_forms.TestCollaborateForm.test_form_is_valid	Run a single test, test_form_is_valid, within the location specified.
