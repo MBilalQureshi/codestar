@@ -163,3 +163,16 @@ Heroku hosts an application of a known size and doesn’t want an unknown quanti
 files to be uploaded to their servers.
 Cloudinary, on the other hand, hosts media files but not running applications.
 ---------------------
+
+Testing
+python3 manage.py test
+Method	Checks that...
+assertTrue(a)	a is True
+assertFalse(a)	a is False
+assertEqual(a, b)	a == b
+assertNotEqual(a, b)	a != b
+assertIn(a, b)	a is in b
+assertNotIn(a, b)	a is not in b
+assertIsInstance(a, b)	a is an instance of b
+Each of these also has an optional msg argument. If we supply that, then this message is what will be printed out on failure. So, we could adjust the assertTrue in our first test to read:
+self.assertTrue(comment_form.is_valid(), msg='Form is not valid')
